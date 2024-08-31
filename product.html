@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XM80SC051T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XM80SC051T');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="content">
+        <h1>Cargando producto...</h1>
+    </div>
+    <script>
+        // Extraer el slug o id del producto desde la URL
+        const params = new URLSearchParams(window.location.search);
+        const productSlug = params.get('slug');
+
+        async function fetchProductDetails() {
+            const spaceId = 'kq8uto4jnrjy'; 
+            const accessToken = '-1ZmArVwIfwJVNtAKjkXHL-xZ1O0WMSl5TZtafkf3Vs'; 
+            const environment = 'master';
+
+            // Construir la URL para obtener los datos del producto por slug
+            const url = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environment}/entries?access_token=${accessToken}&content_type=pageProduct&fields.slug=${productSlug}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Verificar si se encontró el producto
+                if (data.items.length > 0) {
+                    const product = data.items[0].fields;
+                    const imageIds = product.productImages ? product.productImages.map(image => image.sys.id) : [];
+                    const imageUrls = await Promise.all(imageIds.map(id => fetchImageUrl(id)));
+
+                    const contentElement = document.getElementById('content');
+
+                    // Crear el HTML para mostrar los detalles del producto
+                    const productHTML = `
+                        <div class="product-item">
+                            <nav>
+                                <ul>
+                                    <li><a href="index.html">Inicio</a></li>
+                                    <li><a href="login.html" id="loginBtn">Login</a></li>
+                                </ul>
+                            </nav>
+                            <div class="product-carousel">
+                                ${imageUrls.map(url => `<img src="${url}" alt="${product.name}">`).join('')}
+                            </div>
+                            <div class="product-details">
+                                <h1>${product.name}</h1>
+                                <p>$${product.price}</p>
+                                <p>${product.description}</p>
+                                <label for="quantity">Cantidad</label>
+                                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                                <button id="addToCartBtn">Agregar al carrito</button>
+                            </div>
+                        </div>
+                    `;
+
+                    contentElement.innerHTML = productHTML;
+
+                    // Agregar evento click al botón "Agregar al carrito"
+                    const addToCartBtn = document.getElementById('addToCartBtn');
+                    addToCartBtn.addEventListener('click', () => {
+                        // Agregar lógica para agregar al carrito (si aplica)
+
+                        // Google Analytics Events
+                        gtag('event', 'add_to_cart', {
+                            'items': [
+                                {
+                                    'id': productSlug,
+                                    'name': product.name,
+                                    'price': product.price,
+                                    'quantity': document.getElementById('quantity').value,
+                                }
+                            ]
+                        });
+                    });
+
+                    // Agregar evento click al botón "Login"
+                    const loginBtn = document.getElementById('loginBtn');
+                    loginBtn.addEventListener('click', () => {
+                        gtag('event', 'login_click');
+                    });
+                } else {
+                    document.getElementById('content').innerHTML = '<h1>Producto no encontrado</h1>';
+                }
+
+            } catch (error) {
+                console.error('Error fetching product details:', error);
+                document.getElementById('content').innerHTML = '<h1>Error al cargar el producto</h1>';
+            }
+        }
+
+        // Función para obtener la URL de una imagen
+        async function fetchImageUrl(imageId) {
+            const spaceId = 'kq8uto4jnrjy'; 
+            const accessToken = '-1ZmArVwIfwJVNtAKjkXHL-xZ1O0WMSl5TZtafkf3Vs'; 
+            const environment = 'master';
+            
+            const url = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environment}/assets/${imageId}?access_token=${accessToken}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.fields.file.url;
+        }
+
+        // Llamar a la función para cargar los detalles del producto
+        fetchProductDetails();
+    </script>
+</body>
+</html>

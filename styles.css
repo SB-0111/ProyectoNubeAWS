@@ -1,0 +1,310 @@
+/* Estilo global */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Fondo gris suave */
+    color: #333; /* Texto gris oscuro */
+    overflow-x: hidden;
+    background-image: none; /* Eliminamos el gradiente */
+}
+
+/* Barra de navegaciÃ³n */
+nav {
+  background-color: #e0e0e0; /* Gris claro para el navbar */
+  padding: 20px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+nav a {
+  color: #333; /* Color del texto en el navbar */
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #ddd; /* Gris mÃ¡s oscuro al pasar el ratÃ³n */
+}
+
+/* Contenedor principal */
+#content {
+    max-width: 1200px;
+    width: 90%;
+    background-color: #fff; /* Blanco para el contenedor principal */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra mÃ¡s suave */
+    margin: 100px auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#content:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Sombra mÃ¡s suave */
+}
+
+/* Estilo de los productos */
+.product-item {
+    background-color: #fff; /* Blanco para el producto */
+    border-radius: 15px;
+    padding: 25px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra mÃ¡s suave */
+    transition: transform 0.4s, box-shadow 0.4s, background-color 0.4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    width: 100%;
+    max-height: 500px;
+}
+
+.product-carousel img {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.product-carousel img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra mÃ¡s suave */
+}
+
+.product-details {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.product-details h1 {
+    font-size: 2rem;
+    color: #333; /* Color del texto del tÃ­tulo */
+}
+
+.product-details p {
+    color: #666; /* Gris mÃ¡s claro para el texto */
+    margin: 10px 0;
+}
+
+.product-details label {
+    display: block;
+    margin: 10px 0;
+    color: #333; /* Gris oscuro para las etiquetas */
+}
+
+.product-details input[type="number"] {
+    width: 80px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-right: 10px;
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px;
+    background-color: #eee; /* Gris claro de fondo */
+    color: #333;
+}
+
+.product-details button {
+    background-color: #4CAF50; /* Verde para el botÃ³n */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.4s, transform 0.4s;
+    margin-top: 20px;
+}
+
+.product-details button:hover {
+    background-color: #45a049; /* Verde mÃ¡s oscuro al pasar el ratÃ³n */
+    transform: scale(1.1);
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+    .product-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-item {
+        padding: 20px;
+    }
+
+    .product-carousel {
+        flex-direction: column;
+    }
+
+    .product-carousel img {
+        width: 100%;
+        max-height: 300px; 
+    }
+}
+
+/* Estilos para la pÃ¡gina de login y registro */
+.login-container,
+.registro-container {
+  background-color: #fff; /* Blanco para los contenedores */
+  border-radius: 8px;
+  padding: 40px;
+  width: 350px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra mÃ¡s suave */
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h2 {
+  color: #333; /* Color del texto del tÃ­tulo */
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #333; /* Gris oscuro para las etiquetas */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: #eee; /* Gris claro de fondo */
+  color: #333;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50; /* Verde para el botÃ³n */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049; /* Verde mÃ¡s oscuro al pasar el ratÃ³n */
+}
+
+.social-login,
+.social-registro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-login a,
+.social-registro a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+.facebook-btn {
+  background-color: #4267B2;
+}
+
+.google-btn {
+  background-color: #DB4437;
+}
+
+.social-login a img,
+.social-registro a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.credits {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.credits a {
+  color: #666; /* Gris claro para los enlaces */
+  text-decoration: none;
+}
+
+.credits a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para la pÃ¡gina de detalles del producto */
+.product-details {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.product-details h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.product-details p {
+  color: #666;
+  margin: 10px 0;
+}
+
+.product-details label {
+  display: block;
+  margin: 10px 0;
+  color: #333;
+}
+
+.product-details input[type="number"] {
+  width: 80px;
+  padding: 10px;
+  font-size: 1rem;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #eee;
+  color: #333;
+}

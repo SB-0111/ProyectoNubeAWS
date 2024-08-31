@@ -1,0 +1,153 @@
+/* Estilo global para la página de registro */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0; /* Fondo gris suave */
+  color: #333; /* Texto gris oscuro */
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para la barra de navegación */
+nav {
+  background-color: #e0e0e0; /* Gris claro para el navbar */
+  padding: 20px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+nav a {
+  color: #333; /* Color del texto en el navbar */
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #ddd; /* Gris más oscuro al pasar el ratón */
+}
+
+/* Contenedor del formulario de registro */
+.registro-container {
+  background-color: #fff; /* Blanco para el contenedor */
+  border-radius: 8px;
+  padding: 40px;
+  width: 350px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Título del formulario */
+h2 {
+  color: #333; /* Color del texto del título */
+  margin-bottom: 20px;
+}
+
+/* Estilos para las etiquetas de los campos */
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #333; /* Gris oscuro para las etiquetas */
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: #eee; /* Gris claro de fondo */
+  color: #333;
+}
+
+/* Estilos para el botón de enviar */
+button[type="submit"] {
+  background-color: #4CAF50; /* Verde para el botón */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Efecto hover para el botón */
+button[type="submit"]:hover {
+  background-color: #45a049; /* Verde más oscuro al pasar el ratón */
+}
+
+/* Estilos para los botones de redes sociales */
+.social-registro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-registro a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+.facebook-btn {
+  background-color: #4267B2;
+}
+
+.google-btn {
+  background-color: #DB4437;
+}
+
+.social-registro a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/* Estilos para los créditos de los iconos */
+.credits {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.credits a {
+  color: #666; /* Gris claro para los enlaces */
+  text-decoration: none;
+}
+
+.credits a:hover {
+  text-decoration: underline;
+}

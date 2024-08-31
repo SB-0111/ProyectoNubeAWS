@@ -1,0 +1,295 @@
+/* Estilo global */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Fondo gris suave */
+  color: #333; /* Texto gris oscuro */
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column; /* Ajusta la distribución de los elementos */
+  min-height: 100vh;
+}
+
+/* Barra de navegación */
+nav {
+background-color: #e0e0e0; /* Gris claro para el navbar */
+padding: 20px 0;
+width: 100%;
+position: fixed;
+top: 0;
+z-index: 10;
+}
+
+nav ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+text-align: right;
+}
+
+nav li {
+display: inline-block;
+margin-left: 20px;
+}
+
+nav a {
+color: #333; /* Color del texto en el navbar */
+text-decoration: none;
+padding: 8px 16px;
+border-radius: 4px;
+}
+
+nav a:hover {
+background-color: #ddd; /* Gris más oscuro al pasar el ratón */
+}
+
+/* Contenedor principal */
+#content {
+  max-width: 1200px;
+  width: 90%;
+  background-color: #fff; /* Blanco para el contenedor principal */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+  margin: 80px auto; /* Ajusta el margen superior */
+}
+
+/* Hero Banner */
+#content > div { /* Estilos para el Hero Banner */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#content > div img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+#content > div h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff; /* Texto blanco para el título */
+  font-size: 3em;
+}
+
+/* Productos */
+h2 {
+  text-align: center;
+  margin-top: 40px;
+  color: #333; /* Color del texto del título */
+}
+
+.products-container { /* Contenedor para los productos */
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.product-item { /* Estilos para cada producto */
+  margin: 10px;
+  text-align: center;
+  width: 200px; /* Ajusta el ancho según sea necesario */
+}
+
+.product-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 10px;
+}
+
+.product-item h3 {
+  margin-bottom: 5px;
+}
+
+.product-item .product-price { /* Estilo para el precio */
+  color: #666;
+}
+
+/* Estilos para la página de login y registro */
+.login-container,
+.registro-container {
+  background-color: #fff; /* Blanco para los contenedores */
+  border-radius: 8px;
+  padding: 40px;
+  width: 350px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+  margin: 80px auto; /* Ajusta el margen superior */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h2 {
+  color: #333; /* Color del texto del título */
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #333; /* Gris oscuro para las etiquetas */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: #eee; /* Gris claro de fondo */
+  color: #333;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50; /* Verde para el botón */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049; /* Verde más oscuro al pasar el ratón */
+}
+
+.social-login,
+.social-registro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-login a,
+.social-registro a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+.facebook-btn {
+  background-color: #4267B2;
+}
+
+.google-btn {
+  background-color: #DB4437;
+}
+
+.social-login a img,
+.social-registro a img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.credits {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.credits a {
+  color: #666; /* Gris claro para los enlaces */
+  text-decoration: none;
+}
+
+.credits a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para la página de detalles del producto */
+.product-details {
+margin-top: 20px;
+text-align: left;
+}
+
+.product-details h1 {
+font-size: 2rem;
+color: #333;
+}
+
+.product-details p {
+color: #666;
+margin: 10px 0;
+}
+
+.product-details label {
+display: block;
+margin: 10px 0;
+color: #333;
+}
+
+.product-details input[type="number"] {
+width: 80px;
+padding: 10px;
+font-size: 1rem;
+margin-right: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: #eee;
+color: #333;
+}
+
+/* Carrusel de productos */
+.products-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.product-carousel-item { /* Estilos para cada producto en el carrusel */
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 10px;
+}
+
+.product-carousel-item img {
+  width: 100%;
+  height: 150px; /* Ajusta la altura de la imagen */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product-carousel-item h3 {
+  margin-bottom: 5px;
+}
+
+.product-carousel-item .product-price {
+  color: #666;
+}

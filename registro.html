@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="registro-styles.css"> 
+</head>
+<body>
+    <nav> 
+        <ul> 
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="login.html">Iniciar sesión</a></li> 
+        </ul> 
+    </nav>
+    <div class="registro-container">
+        <h2>Crear una cuenta</h2>
+        <form id="registro-form">
+        
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="family_name">Apellido:</label>
+                <input type="text" id="family_name" name="family_name" required>
+            <div>
+                <label for="username">username:</label>
+                <input type="text" id="username" name="username" required>
+            <div>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+
+        <div class="social-registro">
+            <a href="#" id="facebook-registro" class="facebook-btn">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Logo de Facebook">
+                Registrarse con Facebook
+            </a>
+            <a href="#" id="google-registro" class="google-btn">
+                <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo de Google">
+                Registrarse con Google
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registroForm = document.getElementById('registro-form');
+            if (registroForm) {
+        registroForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const familyName = document.getElementById('family_name').value;
+            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value; // Obtiene el valor del nuevo campo "username"
+
+            try {
+                const response = await fetch('https://cognito-idp.us-east-2.amazonaws.com/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-amz-json-1.1',
+                        'X-Amz-Target': 'AWSCognitoIdentityProviderService.SignUp'
+                    },
+                    body: JSON.stringify({
+                        ClientId: '', // Reemplaza con tu Client ID
+                        Username: username, // Envía el nombre de usuario en lugar del correo electrónico
+                        Password: password,
+                        UserAttributes: [
+                            { Name: 'email', Value: email },
+                            { Name: 'name', Value: name },
+                            { Name: 'family_name', Value: familyName }
+                        ]
+                    })
+                });
+
+                        const result = await response.json();
+
+                        if (result.UserConfirmed || result.UserSub) { 
+                            // Si el usuario se confirma automáticamente o se crea correctamente
+                            console.log('Registro exitoso:', result);
+                            alert('Registro exitoso. Por favor, verifica tu correo electrónico para confirmar tu cuenta.');
+                            window.location.href = 'login.html'; 
+                        } else {
+                            console.error('Error en el registro:', result);
+                            alert('Error en el registro: ' + (result.message || 'Error desconocido'));
+                        }
+
+                    } catch (error) {
+                        console.error('Error al registrarse:', error);
+                        alert('Error al registrarse: ' + error.message);
+                    }
+                });
+            } else {
+                console.error('El formulario de registro no se encontró.');
+            }
+
+            // Manejo del registro con Google
+            var googleRegistroButton = document.getElementById('google-registro');
+            if (googleRegistroButton) {
+                googleRegistroButton.addEventListener('click', function() {
+                    window.location.href = `https://logincds.auth.us-east-2.amazoncognito.com/oauth2/authorize?response_type=code&client_id=&redirect_uri=https://.cloudfront.net/&identity_provider=Google`;
+                });
+            }
+
+            // Manejo del registro con Facebook
+            var facebookRegistroButton = document.getElementById('facebook-registro');
+            if (facebookRegistroButton) {
+                facebookRegistroButton.addEventListener('click', function() {
+                    window.location.href = `https://logincds.auth.us-east-2.amazoncognito.com/oauth2/authorize?response_type=code&client_id=&redirect_uri=https://=.cloudfront.net/&identity_provider=Facebook`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
